@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Economic Data - FRED API</title>
+    <title>FRED API</title>
 </head>
 <body>
 
-<h1>FRED API Django App</h1>
+<h1>Economic Data - FRED API</h1>
 
 {% if data %}
     <h2>Series ID: {{ series_id }}</h2>
@@ -16,11 +16,16 @@
         <tr>
             <th>Date</th>
             <th>Value</th>
+            <th>realtime_start</th>
+            <th>realtime_end</th>
         </tr>
         {% for observation in data.observations %}
             <tr>
                 <td>{{ observation.date }}</td>
                 <td>{{ observation.value }}</td>
+                <td>{{ observation.realtime_start }}</td>
+                <td>{{ observation.realtime_end }}</td>
+
             </tr>
         {% endfor %}
     </table>
