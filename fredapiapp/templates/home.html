@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRED-API</title>
+    <title>Economic Data - FRED API</title>
 </head>
 <body>
 
-    <h2>Economic Data</h2>
-    <p>{{ data }}</p>
+<h1>FRED API Django App</h1>
 
-    
+{% if data %}
+    <h2>Series ID: {{ series_id }}</h2>
+
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Value</th>
+        </tr>
+        {% for observation in data.observations %}
+            <tr>
+                <td>{{ observation.date }}</td>
+                <td>{{ observation.value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+
 </body>
 </html>
